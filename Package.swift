@@ -7,7 +7,12 @@ let package = Package(
         .library(name: "Tailscale", targets: ["Tailscale"])
     ],
     targets: [
-        .target(name: "Tailscale", path: "swift/src", plugins: [.plugin(name: "GoBuild")]),
+        .target(
+            name: "Tailscale",
+            path: "swift/src",
+            publicHeadersPath: "out",
+            plugins: [.plugin(name: "GoBuild")]
+        ),
         .plugin(
             name: "GoBuild",
             capability: .buildTool(),
